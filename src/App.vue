@@ -1,6 +1,7 @@
 <script setup>
   import q from './data/quizes.json'
   import { ref, watch } from 'vue'
+  import Card from './components/Card.vue';
 
   const quizes = ref(q);
   const search = ref("");
@@ -13,9 +14,7 @@
 
 <template>
   <div class="container">
-    <!-- {{ q }} -->
     <header>
-      <!-- {{ search }} -->
       <h1>
         Quizzes
       </h1>
@@ -23,8 +22,13 @@
     </header>
 
     <div class="options-container">
-      <div 
-        v-for="quiz in quizes" 
+      <Card 
+        v-for="quiz in quizes"
+        :key="quiz.id"
+        :quiz="quiz"
+      />
+      <!-- <div 
+        v-for="quiz in quizes"
         class="card"
         :key="quiz.id"
       >
@@ -33,7 +37,7 @@
           <h2>{{ quiz.name }}</h2>
           <p>{{ quiz.questions.length }} Questions</p>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -41,7 +45,7 @@
 
 <style scoped>
   .container {
-    max-width: 150px; /* this */
+    max-width: 1000px; /* this */
     margin: 0 auto; 
   }
 
@@ -68,28 +72,6 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
-  }
-
-  /* CARDS */
-  
-  .card {
-    width: 140px; /* this */
-    overflow: hidden;
-    border-radius: 2%;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-
-  }
-
-  .card img {
-    width: 100%;
-  }
-  
-  .card .card-text { 
-    padding: 0 0px;
-  }
-  
-  .card .card-text h2 { 
-    font-weight: bold;
   }
 
 </style>
