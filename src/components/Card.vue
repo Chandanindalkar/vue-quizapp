@@ -3,9 +3,6 @@ import { defineProps, ref, watch } from 'vue';
 
 const { quiz } = defineProps(['quiz'])
 
-const state = ref(
-);
-
 </script>
 
 <template>
