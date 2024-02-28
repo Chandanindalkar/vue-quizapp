@@ -14,6 +14,8 @@ const currentQuestionIndex = ref(0);
 
 const quiz = quizes.find(q => q.id == quizId);
 
+const numberOfCorrectAnswers = ref(0);
+
 // const questionStatus = ref(`${currentQuestionIndex.value}/${quiz.questions.length}`);
 // watch(() => currentQuestionIndex.value, () => {
 //   questionStatus.value = `${currentQuestionIndex.value}/${quiz.questions.length}`;
@@ -23,9 +25,17 @@ const questionStatus = computed(() => {
 })
 
 const barPercentage = computed(() => {
-  return `${currentQuestionIndex.value/quiz.questions.length * 100}`;
+  return `${currentQuestionIndex.value/quiz.questions.length * 100}%`;
 })
 
+const onOptionSelected = (isCorrect) => {
+  console.log(`emitted event ${isCorrect}`)
+  if(isCorrect) {
+    numberOfCorrectAnswers.value++;
+  }
+  // to move onto next question
+  currentQuestionIndex.value++;
+}
 </script>
 
 <template>
@@ -38,6 +48,7 @@ const barPercentage = computed(() => {
     <div>
       <Question 
         :question="quiz.questions[currentQuestionIndex]"
+        @selectOption="onOptionSelected"
       />
     </div>
     <button @click="currentQuestionIndex--">Prev</button>
