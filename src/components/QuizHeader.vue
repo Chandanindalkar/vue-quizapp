@@ -3,17 +3,20 @@ import { defineProps, ref, watch } from 'vue';
 import { useRoute, useRouter, RouterView } from 'vue-router';
 // import Module from '';
 
-const { questionStatus } = defineProps(['questionStatus']);
-
-// const stat = ref();
+const { questionStatus,  } = defineProps(['questionStatus', 'barPercentage']);
 
 </script>
 
 <template>
     <header>
+        {{ barPercentage }}
       <h4>Questions {{ questionStatus }}</h4>
       <div class="bar">
-        <div class="completion"></div>
+        <div 
+            :style="{width: barPercentage}"
+            class="completion"
+        >
+        </div>
       </div>
     </header>
 </template>
@@ -37,5 +40,6 @@ const { questionStatus } = defineProps(['questionStatus']);
     width: 0%;
     height: 100%;
     background-color: bisque;
+    color: aliceblue;
   }
 </style>
