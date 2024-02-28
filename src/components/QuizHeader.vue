@@ -5,7 +5,7 @@ import { useRoute, useRouter, RouterView } from 'vue-router';
 
 const { questionStatus } = defineProps(['questionStatus']);
 
-// const questionStatus = ref();
+// const stat = ref();
 
 </script>
 

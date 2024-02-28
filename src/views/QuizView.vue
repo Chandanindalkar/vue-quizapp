@@ -14,8 +14,10 @@ const currentQuestionIndex = ref(0);
 
 const quiz = quizes.find(q => q.id == quizId);
 
-const questionStatus = `${currentQuestionIndex.value}/${quiz.questions.length}`;
-
+const questionStatus = ref(`${currentQuestionIndex.value}/${quiz.questions.length}`);
+watch(() => currentQuestionIndex.value, () => {
+  questionStatus.value = `${currentQuestionIndex.value}/${quiz.questions.length}`;
+})
 </script>
 
 <template>
@@ -23,13 +25,14 @@ const questionStatus = `${currentQuestionIndex.value}/${quiz.questions.length}`;
     <!-- {{ quiz }} -->
     <QuizHeader 
       :questionStatus="questionStatus"
-      :questionNumber="currentQuestionIndex"
     />
     <div>
       <Question 
         :question="quiz.questions[currentQuestionIndex]"
       />
     </div>
+    <button @click="currentQuestionIndex--">Prev</button>
+    <button @click="currentQuestionIndex++">Next</button>
 
   </div>
 </template>
