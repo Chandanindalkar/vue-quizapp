@@ -2,6 +2,7 @@
 import { defineProps, ref, watch } from 'vue';
 import { useRoute, useRouter, RouterView } from 'vue-router';
 
+const router = useRouter();
 const { numberOfCorrectAnswers, questionsLength } = defineProps(['numberOfCorrectAnswers', 'questionsLength'])
 </script>
 
@@ -11,6 +12,7 @@ const { numberOfCorrectAnswers, questionsLength } = defineProps(['numberOfCorrec
     <h1>
         {{ numberOfCorrectAnswers }}/{{ questionsLength }}
     </h1>
+    <button @click="router.push('/')">Home</button>
   </div>
 </template>
 

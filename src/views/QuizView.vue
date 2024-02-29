@@ -7,6 +7,7 @@ import Result from '../components/Result.vue'
 import quizes from '../data/quizes.json'
 
 const route = useRoute();
+
 // The parseInt() function parses a string argument,
 // and returns an integer of the specified radix (the base in mathematical numeral systems).
 const quizId = parseInt(route.params.id);
