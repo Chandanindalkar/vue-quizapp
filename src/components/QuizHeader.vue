@@ -3,13 +3,12 @@ import { defineProps, ref, watch } from 'vue';
 import { useRoute, useRouter, RouterView } from 'vue-router';
 // import Module from '';
 
-const { questionStatus,  } = defineProps(['questionStatus', 'barPercentage']);
+const { questionStatus, barPercentage } = defineProps(['questionStatus', 'barPercentage']);
 
 </script>
 
 <template>
     <header>
-        {{ barPercentage }}
       <h4>Questions {{ questionStatus }}</h4>
       <div class="bar">
         <div 
